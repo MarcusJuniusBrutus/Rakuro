@@ -10,3 +10,4 @@ public class connection {
             System.out.println(rs.getString(1));
         }
     }
+}
