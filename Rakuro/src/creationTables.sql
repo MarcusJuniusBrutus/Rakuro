@@ -28,7 +28,7 @@ CREATE TABLE Hotel_Chain_Emails(
     email VARCHAR(20) NOT NULL,
     PRIMARY KEY(hotel_chain_name, email),
     FOREIGN KEY(hotel_chain_name)
-        REFERENCES Hotel_Chain(hotel_chain_name),
+        REFERENCES Hotel_Chain(hotel_chain_name)
         ON DELETE CASCADE
 );
 
@@ -37,7 +37,7 @@ CREATE TABLE Hotel_Chain_Phone_Numbers(
     number CHAR(10) NOT NULL,
     PRIMARY KEY(hotel_chain_name, number),
     FOREIGN KEY(hotel_chain_name)
-        REFERENCES Hotel_Chain(hotel_chain_name),
+        REFERENCES Hotel_Chain(hotel_chain_name)
         ON DELETE CASCADE
 );
 
@@ -53,10 +53,10 @@ CREATE TABLE Hotel(
     manager_SSN CHAR(9) NOT NULL,
     PRIMARY KEY(hotel_chain_name, hotel_number),
     FOREIGN KEY(hotel_chain_name)
-        REFERENCES Hotel_Chain(hotel_chain_name),
+        REFERENCES Hotel_Chain(hotel_chain_name)
         ON DELETE CASCADE
     FOREIGN KEY(manager_SSN)
-        REFERENCES Person(SSN),
+        REFERENCES Person(SSN)
         ON DELETE CASCADE
 
 );
@@ -68,7 +68,7 @@ CREATE TABLE Hotel_Emails (
     email VARCHAR(255) NOT NULL,
     PRIMARY KEY (hotel_chain_name, hotel_number, email),
     FOREIGN KEY (hotel_chain_name, hotel_number) 
-        REFERENCES Hotel(hotel_chain_name, hotel_number),
+        REFERENCES Hotel(hotel_chain_name, hotel_number)
         ON DELETE CASCADE
 );
 
@@ -78,7 +78,7 @@ CREATE TABLE Hotel_Phone_Numbers (
     number VARCHAR(20) NOT NULL,
     PRIMARY KEY (hotel_chain_name, hotel_number, number),
     FOREIGN KEY (hotel_chain_name, hotel_number) 
-        REFERENCES Hotel(hotel_chain_name, hotel_number),
+        REFERENCES Hotel(hotel_chain_name, hotel_number)
         ON DELETE CASCADE
 );
 
@@ -107,7 +107,7 @@ CREATE TABLE Customer(
     SSN CHAR(9) NOT NULL,
     PRIMARY KEY(SSN),
     FOREIGN KEY(SSN)
-        REFERENCES Person(SSN),
+        REFERENCES Person(SSN)
         ON DELETE CASCADE
 );
 
@@ -117,9 +117,10 @@ CREATE TABLE Employee(
     hotel_number INTEGER NOT NULL,
     PRIMARY KEY(SSN),
     FOREIGN KEY(SSN)
-        REFERENCES Person(SSN),
+        REFERENCES Person(SSN)
         ON DELETE CASCADE
-    FOREIGN KEY(hotel_chain_name, hotel_number) REFERENCES Hotel(hotel_chain_name, hotel_number)
+    FOREIGN KEY(hotel_chain_name, hotel_number)
+        REFERENCES Hotel(hotel_chain_name, hotel_number)
 );
 
 CREATE TABLE Employee_Roles(
@@ -127,7 +128,7 @@ CREATE TABLE Employee_Roles(
     role VARCHAR(20) NOT NULL,
     PRIMARY KEY(SSN, role),
     FOREIGN KEY(SSN)
-        REFERENCES Employee(SSN),
+        REFERENCES Employee(SSN)
         ON DELETE CASCADE
 );
 
@@ -146,7 +147,7 @@ CREATE TABLE Room(
         room_number
     ),
     FOREIGN KEY(hotel_chain_name, hotel_number)
-        REFERENCES Hotel(hotel_chain_name, hotel_number),
+        REFERENCES Hotel(hotel_chain_name, hotel_number)
         ON DELETE CASCADE
 );
 
@@ -170,7 +171,7 @@ CREATE TABLE Room_Amenities(
         hotel_chain_name,
         hotel_number,
         room_number
-    ),
+    )
     ON DELETE CASCADE
 );
 
@@ -194,7 +195,7 @@ CREATE TABLE Room_Problems_Damages(
         hotel_chain_name,
         hotel_number,
         room_number
-    ),
+    )
     ON DELETE CASCADE
 );
 
@@ -217,7 +218,7 @@ CREATE TABLE Booking(
         room_number
     ),
     FOREIGN KEY(SSN)
-        REFERENCES Customer(SSN),
+        REFERENCES Customer(SSN)
         ON DELETE CASCADE
     FOREIGN KEY(
         hotel_chain_name,
