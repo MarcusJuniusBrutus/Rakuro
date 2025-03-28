@@ -155,7 +155,7 @@ INSERT INTO Room (hotel_chain_name, hotel_number, room_number, capacity, view_ty
 ('Carlton', 5, '43A', 3, 'sea', true, '208.99'),
 ('Carlton', 5, '45B', 1, 'sea', false, '105.99'),
 ('Carlton', 5, '46C', 6, 'mountain', true, '109.99'),
-('Carlton', 6, '50A', 4, 'sea', false`, '457.99'),
+('Carlton', 6, '50A', 4, 'sea', false, '457.99'),
 ('Carlton', 6, '51A', 7, 'mountain', false, '1329.99'),
 ('Carlton', 6, '52B', 3, 'sea', true, '349.99'),
 ('Carlton', 6, '53', 1, 'sea', true, '274.99'),
