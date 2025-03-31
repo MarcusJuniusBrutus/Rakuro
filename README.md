@@ -1,2 +1,0 @@
-# Rakuro
-Databases Project
