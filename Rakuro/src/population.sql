@@ -1,44 +1,4 @@
-SET search_path = "Rakuro"; 
-
-INSERT
-INTO
-    Hotel_Chain
-VALUES(
-    'Carlton',
-    '934220',
-    'El Camino Road',
-    'Atascadero',
-    'California',
-    'USA'
-),(
-    'Sheraton',
-    'L2G3K7',
-    'Falls Avenue',
-    'Niagara Falls',
-    'Ontario',
-    'Canada'
-),(
-    'Hilton',
-    'H5Z3K1',
-    'Downsview Road',
-    'Halifax',
-    'Ontario',
-    'Canada'
-),(
-    'Fairmont',
-    'A8B6K9',
-    'Rue Montcalm',
-    'Montreal',
-    'Quebec',
-    'Canada'
-),(
-    'Marriott',
-    'K1P5R7',
-    'Kent Street',
-    'Edmonton',
-    'Alberta',
-    'Canada'
-);
+SET search_path = "Rakuro2.0";
 
 INSERT INTO Person (SSN, first_name, middle_name, last_name, street, postal_code, city, province,country) VALUES
 ('047189473', 'Xavier', NULL, 'Lumiere', '45 Light Street', 'K1L6Y7', 'Philos', 'Wanderer', 'Space'),
@@ -87,6 +47,44 @@ INSERT INTO Person (SSN, first_name, middle_name, last_name, street, postal_code
 ('999473677', 'Pikachu', 'Electric', 'Raichu', '78 Brook Street', 'M1A5V6', 'Kanto', 'Ohio', 'USA'),
 ('999556643', 'Ada', NULL, 'Wong', '55 Cloudy Street', 'B3N1H1', 'Berlin', 'Poll', 'Germany');
 
+INSERT INTO hotel_chain
+VALUES(
+    'Carlton',
+    '934220',
+    'El Camino Road',
+    'Atascadero',
+    'California',
+    'USA'
+),(
+    'Sheraton',
+    'L2G3K7',
+    'Falls Avenue',
+    'Niagara Falls',
+    'Ontario',
+    'Canada'
+),(
+    'Hilton',
+    'H5Z3K1',
+    'Downsview Road',
+    'Halifax',
+    'Ontario',
+    'Canada'
+),(
+    'Fairmont',
+    'A8B6K9',
+    'Rue Montcalm',
+    'Montreal',
+    'Quebec',
+    'Canada'
+),(
+    'Marriott',
+    'K1P5R7',
+    'Kent Street',
+    'Edmonton',
+    'Alberta',
+    'Canada'
+);
+
 INSERT INTO Hotel (hotel_chain_name, hotel_number, postal_code,street, city, province, country, rating, manager_SSN) VALUES
 ('Carlton', 1, 'Q1W2E3', '12 Great Street', 'Prank', 'Texas', 'USA', 2, '572966393'),
 ('Carlton', 2, 'V1B7N7', '12 Perfect Street', 'Paris', 'Jillian', 'France', 4, '465970687'),
@@ -128,6 +126,98 @@ INSERT INTO Hotel (hotel_chain_name, hotel_number, postal_code,street, city, pro
 ('Sheraton', 6, 'P5I6G7', '123 Meat', 'Oinkers', 'Pork Belly', 'Big Oink', 1, '301427564'),
 ('Sheraton', 7, 'V1V2B3', '90 BTS Street', 'Bangtang', 'Seoul', 'South Korea', 5, '731259222'),
 ('Sheraton', 8, 'A2B3C4', '12 Leaf Street', 'Leaf Village', 'Land of Fire', 'Japan', 5, '381759471');
+
+
+INSERT INTO Employee (SSN, hotel_chain_name, hotel_number) VALUES
+('572966393', 'Carlton', 1),
+('465970687', 'Carlton', 2),
+('234705729', 'Carlton', 3),
+('900264923', 'Carlton', 4),
+('572425499', 'Carlton', 5),
+('999556643', 'Carlton', 6),
+('365884377', 'Carlton', 7),
+('927728190', 'Carlton', 8),
+('098562741', 'Fairmont', 1),
+('321645978', 'Fairmont', 2),
+('123456729', 'Fairmont', 3),
+('213456873', 'Fairmont', 4),
+('123053269', 'Fairmont', 5),
+('214365879', 'Fairmont', 6),
+('123456743', 'Fairmont', 7),
+('047189473', 'Fairmont', 8),
+('123456789', 'Hilton', 1),
+('111111111', 'Hilton', 2),
+('222222222', 'Hilton', 3),
+('333333333', 'Hilton', 4),
+('563891123', 'Hilton', 5),
+('529172937', 'Hilton', 6),
+('752946877', 'Hilton', 7),
+('747382013', 'Hilton', 8),
+('385647382', 'Marriott', 1),
+('284626355', 'Marriott', 2),
+('999473677', 'Marriott', 3),
+('999223544', 'Marriott', 4),
+('566365732', 'Marriott', 5),
+('757676788', 'Marriott', 6),
+('959668695', 'Marriott', 7),
+('686787978', 'Marriott', 8),
+('281759471', 'Sheraton', 1),
+('501759471', 'Sheraton', 2),
+('381759511', 'Sheraton', 3),
+('098759471', 'Sheraton', 4),
+('382349471', 'Sheraton', 5),
+('301427564', 'Sheraton', 6),
+('731259222', 'Sheraton', 7),
+('381759471', 'Sheraton', 8);
+
+
+
+INSERT INTO employee_roles (SSN, role) VALUES
+('047189473', 'manager'),
+('098562741', 'manager'),
+('098759471', 'manager'),
+('111111111', 'manager'),
+('123053269', 'manager'),
+('123456729', 'manager'),
+('123456743', 'manager'),
+('123456789', 'manager'),
+('213456873', 'manager'),
+('214365879', 'manager'),
+('222222222', 'manager'),
+('234705729', 'manager'),
+('281759471', 'manager'),
+('284626355', 'manager'),
+('301427564', 'manager'),
+('321645978', 'manager'),
+('333333333', 'manager'),
+('365884377', 'manager'),
+('381759471', 'manager'),
+('381759511', 'manager'),
+('382349471', 'manager'),
+('385647382', 'manager'),
+('465970687', 'manager'),
+('501759471', 'manager'),
+('529172937', 'manager'),
+('563891123', 'manager'),
+('566365732', 'manager'),
+('572425499', 'manager'),
+('572966393', 'manager'),
+('686787978', 'manager'),
+('731259222', 'manager'),
+('747382013', 'manager'),
+('752946877', 'manager'),
+('757676788', 'manager'),
+('900264923', 'manager'),
+('927728190', 'manager'),
+('959668695', 'manager'),
+('999223544', 'manager'),
+('999473677', 'manager'),
+('999556643', 'manager');
+
+
+
+
+
 
 INSERT INTO Room (hotel_chain_name, hotel_number, room_number, capacity, view_type, is_extendible, price) VALUES
 ('Carlton', 1, '123A', 4, 'mountain', false, '300.99'),
@@ -336,86 +426,3 @@ INSERT INTO Room (hotel_chain_name, hotel_number, room_number, capacity, view_ty
 ('Sheraton', 8, '804', 2, 'mountain', true, '350.50'),
 ('Sheraton', 8, '805', 3, 'sea', true, '250.50');
 
-INSERT INTO Employee_Roles (SSN, role) VALUES
-('047189473', 'manager'),
-('098562741', 'manager'),
-('098759471', 'manager'),
-('111111111', 'manager'),
-('123053269', 'manager'),
-('123456729', 'manager'),
-('123456743', 'manager'),
-('123456789', 'manager'),
-('213456873', 'manager'),
-('214365879', 'manager'),
-('222222222', 'manager'),
-('234705729', 'manager'),
-('281759471', 'manager'),
-('284626355', 'manager'),
-('301427564', 'manager'),
-('321645978', 'manager'),
-('333333333', 'manager'),
-('365884377', 'manager'),
-('381759471', 'manager'),
-('381759511', 'manager'),
-('382349471', 'manager'),
-('385647382', 'manager'),
-('465970687', 'manager'),
-('501759471', 'manager'),
-('529172937', 'manager'),
-('563891123', 'manager'),
-('566365732', 'manager'),
-('572425499', 'manager'),
-('572966393', 'manager'),
-('686787978', 'manager'),
-('731259222', 'manager'),
-('747382013', 'manager'),
-('752946877', 'manager'),
-('757676788', 'manager'),
-('900264923', 'manager'),
-('927728190', 'manager'),
-('959668695', 'manager'),
-('999223544', 'manager'),
-('999473677', 'manager'),
-('999556643', 'manager');
-
-INSERT INTO Employee (SSN, hotel_chain_name, hotel_number) VALUES
-('572966393', 'Carlton', 1),
-('465970687', 'Carlton', 2),
-('234705729', 'Carlton', 3),
-('900264923', 'Carlton', 4),
-('572425499', 'Carlton', 5),
-('999556643', 'Carlton', 6),
-('365884377', 'Carlton', 7),
-('927728190', 'Carlton', 8),
-('098562741', 'Fairmont', 1),
-('321645978', 'Fairmont', 2),
-('123456729', 'Fairmont', 3),
-('213456873', 'Fairmont', 4),
-('123053269', 'Fairmont', 5),
-('214365879', 'Fairmont', 6),
-('123456743', 'Fairmont', 7),
-('047189473', 'Fairmont', 8),
-('123456789', 'Hilton', 1),
-('111111111', 'Hilton', 2),
-('222222222', 'Hilton', 3),
-('333333333', 'Hilton', 4),
-('563891123', 'Hilton', 5),
-('529172937', 'Hilton', 6),
-('752946877', 'Hilton', 7),
-('747382013', 'Hilton', 8),
-('385647382', 'Marriott', 1),
-('284626355', 'Marriott', 2),
-('999473677', 'Marriott', 3),
-('999223544', 'Marriott', 4),
-('566365732', 'Marriott', 5),
-('757676788', 'Marriott', 6),
-('959668695', 'Marriott', 7),
-('686787978', 'Marriott', 8),
-('281759471', 'Sheraton', 1),
-('501759471', 'Sheraton', 2),
-('381759511', 'Sheraton', 3),
-('098759471', 'Sheraton', 4),
-('382349471', 'Sheraton', 5),
-('301427564', 'Sheraton', 6),
-('731259222', 'Sheraton', 7),
-('381759471', 'Sheraton', 8);
