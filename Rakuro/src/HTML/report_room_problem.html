@@ -3,9 +3,9 @@
 
 <head>
 	<meta charset="UTF-8">
-	<!--view_bookings.html-->
+	<!--report_room_problem.html-->
 	<!--#99ccff, #0066cc, #006666, #4d0099, #4d004d-->
-	<title> View Bookings </title>
+	<title> Report Room Problem </title>
 
 <style>
 	.center {
@@ -54,36 +54,42 @@
 
 	<h1 style="text-align: center; font-family: Verdana; font-size: 54px; color: 
 #0066cc">
-		Rakuro Hotel Website
+		Rakuro Employee Website
 	</h1>
 
 	<table class="center" style="width: 720px">
 		<tr>
-			<th><a href="rakuro.html">Home</a></th>
-			<th><a href="find_rooms.html">Find Rooms</a></th>
-			<th>View Bookings</th>
-			<th><a href="customer_register.html">Sign Up</a></th>
+			<th><a href="employee_rakuro.html">Home</a></th>
+			<th><a href="create_booking.html">Create Booking</a></th>
+			<th><a href="modify_booking.html">Modify Booking</a></th>
+			<th>Report Room Problem</th>
 		</tr>
 	</table>
 	<br>
 
 	<h3 style="text-align: center; font-family: Verdana; font-size: 31px; color: #4d0099; margin: 0px 100px 20px 100px">
-		Rakuro Booking Viewer
+		Employee Reporter
 	</h3>
 	
 	<div style="text-align: center; font-family: Verdana; font-size: 23px; color: #4d004d; margin: 0px 100px 50px 100px">
-		Here you can view your existing bookings. Just insert the booking number for the booking you wish to view the details of and we will show you them.
+		Here you can report any problems found in any room. Please do so so that we can get to fixing any inconveniences as fast as possible.
 	</div>
 	
-	<table><tr><th>
-	<form style="text-align: left; font-family: Verdana; font-size: 18px; color: #4d004d; margin: 50px 100px 50px 100px", name= "input">
-		<div><b> Booking Number: <br></b>
-			<textarea style="font-size: 18px", name= "booking_number" rows=1 cols=20></textarea><br>
+	<form style="text-align: center; font-family: Verdana; font-size: 18px; color: #4d004d; margin: 50px 100px 50px 100px", name= "input">
+		<div><b> Hotel Chain Name: <br></b>
+			<textarea style="font-size: 18px", name= "hotel_chain_name" rows=1 cols=20></textarea><br>
+		<div>
+		<div><b> Hotel_number: <br></b>
+			<textarea style="font-size: 18px", name= "hotel_number" rows=1 cols=20></textarea><br>
+		<div>
+		<div><b> Room Number: <br></b>
+			<textarea style="font-size: 18px", name= "room_number" rows=1 cols=20></textarea><br>
+		<div>
+		<div><b> Problem/Damage: <br></b>
+			<textarea style="font-size: 18px", name= "problem" rows=1 cols=20></textarea><br>
 		<div>
 		<input type="button" name="Submit" value="Submit" onClick="end()">
-	</form></th>
-	<!-- Insert result column here -->
-	</tr></table>
+	</form>
 
 </body>
 </html>

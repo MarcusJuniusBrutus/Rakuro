@@ -46,9 +46,6 @@
 
 <script>
 	function end() {}
-	function show(choice) {
-		alert(choice.value)
-	}
 </script>
 
 </head>
@@ -65,6 +62,7 @@
 			<th><a href="rakuro.html">Home</a></th>
 			<th>Find Rooms</th>
 			<th><a href="view_bookings.html">View Bookings</a></th>
+			<th><a href="customer_register.html">Sign Up</a></th>
 		</tr>
 	</table>
 	<br>
@@ -77,33 +75,48 @@
 		Here you can input information to search for Rooms. Once you have entered all the information to wish to search by, press Submit and all available Rooms fitting your crtieria will be shown to you.
 	</div>
 	
-	<form style="text-align: left; font-family: Verdana; font-size: 18px; color: #4d004d; margin: 0px 100px 50px 100px", name= "input">
+	<table><tr><th>
+	<form style="text-align: left; font-family: Verdana; font-size: 18px; color: #4d004d; margin: 50px 100px 50px 100px", name= "input">
 		<div><b> Country: <br></b>
-			<textarea style="font-size: 18px", name= "country" rows=1 cols=20></textarea><br>
+			<textarea style="font-size: 18px" name= "country" rows=1 cols=20></textarea><br>
 		<div>
 		<div><b> Province: <br></b>
-			<textarea style="font-size: 18px", name= "province" rows=1 cols=20></textarea><br>
+			<textarea style="font-size: 18px" name= "province" rows=1 cols=20></textarea><br>
 		<div>
 		<div><b> City: <br></b>
-			<textarea style="font-size: 18px", name= "city" rows=1 cols=20></textarea><br>
+			<textarea style="font-size: 18px" name= "city" rows=1 cols=20></textarea><br>
 		<div>
 		<div><b> Hotel Chain Name: <br></b>
-			<textarea style="font-size: 18px", name= "hotel_chain_name" rows=1 cols=20></textarea><br>
+			<textarea style="font-size: 18px" name= "hotel_chain_name" rows=1 cols=20></textarea><br>
 		<div>
 		<div><b> Room Capacity: <br></b>
-			<textarea style="font-size: 18px", name= "capacity" rows=1 cols=20></textarea><br>
+			<textarea style="font-size: 18px" name= "capacity" rows=1 cols=20></textarea><br>
 		<div>
 		<div><b> Upper bound for Price: <br></b>
-			<textarea style="font-size: 18px", name= "upper_price" rows=1 cols=20></textarea><br>
+			<textarea style="font-size: 18px" name= "upper_price" rows=1 cols=20></textarea><br>
 		<div>
 		<div><b> Rating for the Hotel: <br></b>
-			<textarea style="font-size: 18px", name= "rating" rows=1 cols=20></textarea><br>
+			<textarea style="font-size: 18px" name= "rating" rows=1 cols=20></textarea><br>
 		<div>
 		<div><b> Total Number of Rooms in the Hotel: <br></b>
-			<textarea style="font-size: 18px", name= "total_rooms" rows=1 cols=20></textarea><br>
+			<textarea style="font-size: 18px" name= "total_rooms" rows=1 cols=20></textarea><br>
 		<div>
+		<div><b> Start Date: <br></b>
+			<input type="date" name="start_date" style="font-size: 18px"><br>
+		</div>
+		<div><b> Start Time: <br></b>
+			<input type="time" name="start_time" style="font-size: 18px"><br>
+		</div>
+		<div><b> End Date: <br></b>
+			<input type="date" name="end_date" style="font-size: 18px"><br>
+		</div>
+		<div><b> End Time: <br></b>
+			<input type="time" name="end_time" style="font-size: 18px"><br>
+		</div>
 		<input type="button" name="Submit" value="Submit" onClick="end()">
-	</form>
+	</form></th>
+	<!-- Insert result column here -->
+	</tr></table>
 
 </body>
 </html>

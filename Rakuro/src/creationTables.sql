@@ -231,10 +231,3 @@ CREATE TABLE Booking(
     )
     ON DELETE CASCADE
 );
-
-
-
-
-
-
-
