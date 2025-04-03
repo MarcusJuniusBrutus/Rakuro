@@ -1,11 +1,13 @@
 <!doctype html>
-<html lang="en-CA">
+<html lang="en-CA" xmlns="http://www.w3.org/1999/html">
 
 <head>
 	<meta charset="UTF-8">
 	<!--Rakuro.html-->
 	<!--#99ccff, #0066cc, #006666, #4d0099, #4d004d-->
 	<title> Rakuro Hotel Website </title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 
 <style>
 	.center {
@@ -77,6 +79,30 @@
 		Here you will find the most up-to-date information about Hotel rooms and bookings in your area. Go to <a href= "find_rooms.html">Find Rooms</a> if you wish to search for rooms or make a booking. Go to <a href= "view_bookings.html">View Bookings</a> if you wish to view your existing bookings. Go to <a href= "customer_register.html">Sign Up</a> if you wish to register for an account (necessary to book a room). <br>
 		We are happy you came to our website and hope you find your stay a pleasant one!
 	</div>
+
+	<script>
+			$(document).ready(function () {
+				$("#button_test").click(function(){
+
+					console.log("hello");
+
+					$.ajax({
+						url: 'http://localhost:63342/api/hello',
+						type: "GET",
+						success: function(data){
+						 //alert(data[message]);
+						 console(JSON.parse(data))
+					 },
+
+					 error: function(data){
+					 alert("error!");
+					 }
+					});
+				});
+			});
+	</script>
+
+	<button id="button_test">Click Me!</button>
 
 </body>
 </html>
