@@ -62,6 +62,64 @@ public class BookingService {
             throw new Exception(e.getMessage());
         }
     }
+	
+	/**
+	* Given a bunch of booking parameters, changes the given booking's values to them.
+	* @param booking_number the booking to modifyBooking
+	* @param ssn the new ssn
+	* @param hotel_chain_name the new hotel_chain_name
+	* @param hotel_number the new hotel_number
+	* @param room_number the new room_number
+	* @param is_paid_for the new is_paid_for
+	* @param start_date the new start_date, must be in format YYYY-MM-DD
+	* @param start_time the new start_time, must be in format HH:MM:SS
+	* @param end_date the new end_date, must be in format YYYY-MM-DD
+	* @param end_time the new end_time, must be in format HH:MM:SS
+	* @param status the new status
+	* @return boolean true if successfully modified, false otherwise
+	* @throws Exception when trying to connect to database
+	*/
+	public boolean modifyBooking(String booking_number, String ssn, String hotel_chain_name, String hotel_number, String room_number, boolean is_paid_for, String start_date, String start_time, String end_date, String end_time, String status) {
+        Connection con = null;
+
+        // sql query
+        String sql = "UPDATE BOOKING SET SSN = " + ssn + 
+		", hotel_chain_name = '" + hotel_chain_name + 
+		"', hotel_number = " + hotel_number + 
+		", room_number = '" + room_number + 
+		"', is_paid_for = " + is_paid_for + 
+		", start_time = '" + start_time + 
+		"', start_date = '" + start_date +
+		"', end_time = '" + end_time + 
+		"', end_date = '" + end_date + 
+		"', status = " + status + 
+		"' WHERE booking_number = " + booking_number + 
+		";";
+
+        // database connection object
+        ConnectionDB db = new ConnectionDB();
+
+        // try connect to database, catch any exceptions
+        try {
+            con = db.getConnection();
+
+            // prepare statement
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            // execute the query
+            stmt.executeUpdate();
+
+            // close the statement
+            stmt.close();
+
+        } catch (Exception e) {
+            return false;
+        } finally {
+            if (con != null) con.close();
+        }
+
+        return true;
+	}
 
     /**
      * Method to delete by booking_number a booking
@@ -85,9 +143,6 @@ public class BookingService {
 
             // prepare statement
             PreparedStatement stmt = con.prepareStatement(sql);
-
-            // set every ? of statement
-            stmt.setString(1, booking_number);
 
             // execute the query
             stmt.executeUpdate();
