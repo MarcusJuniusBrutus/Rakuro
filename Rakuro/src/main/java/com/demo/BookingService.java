@@ -1,9 +1,8 @@
-package PACKAGE_NAME.com.demo;
+package com.demo;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import PACKAGE_NAME.com.demo.Booking;
 
 public class BookingService {
 
@@ -16,7 +15,7 @@ public class BookingService {
     public List<Booking> getBookings() throws Exception {
 
         // sql query
-        String sql = "SELECT * FROM booking";
+        String sql = "SELECT * FROM \"Rakuro\".booking;";
         // database connection object
         ConnectionDB db = new ConnectionDB();
 
@@ -36,7 +35,7 @@ public class BookingService {
             while (rs.next()) {
                 // create new booking object
                 Booking booking = new Booking(
-                        rs.getString("SSN"),
+                        rs.getString("ssn"),
                         rs.getString("hotel_chain_name"),
                         rs.getInt("hotel_number"),
                         rs.getString("room_number"),
@@ -46,7 +45,7 @@ public class BookingService {
                         rs.getDate("start_date"),
                         rs.getTime("end_time"),
                         rs.getDate("end_date"),
-                        rs.getObject("status", BlahBlahBlah.class) //TODO: FIX
+                        rs.getString("status") //TODO: FIX
                 );
 
                 // append booking in bookings list
@@ -79,7 +78,8 @@ public class BookingService {
     public List<Booking> getBookings(String booking_number) throws Exception {
 
         // sql query
-        String sql = "SELECT * FROM booking WHERE booking_number = ?;";
+        String sql = "SELECT * FROM \"Rakuro\".booking;";
+
         // database connection object
         ConnectionDB db = new ConnectionDB();
 
@@ -90,6 +90,7 @@ public class BookingService {
         try (Connection con = db.getConnection()) {
             // prepare the statement
             PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, booking_number);
 
             // get the results from executing the query
             ResultSet rs = stmt.executeQuery();
@@ -109,7 +110,7 @@ public class BookingService {
                         rs.getDate("start_date"),
                         rs.getTime("end_time"),
                         rs.getDate("end_date"),
-                        rs.getObject("status", BlahBlahBlah.class) //TODO: FIX
+                        rs.getString("status") //TODO: FIX
                 );
 
                 // append booking in bookings list
@@ -172,5 +173,10 @@ public class BookingService {
         }
 
         return message;
+    }
+
+    public static void main(String[] args) throws Exception {
+        BookingService bs = new BookingService();
+        System.out.println(bs.getBookings());
     }
 }

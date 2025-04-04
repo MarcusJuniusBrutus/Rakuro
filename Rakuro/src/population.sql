@@ -426,3 +426,16 @@ INSERT INTO Room (hotel_chain_name, hotel_number, room_number, capacity, view_ty
 ('Sheraton', 8, '804', 2, 'mountain', true, '350.50'),
 ('Sheraton', 8, '805', 3, 'sea', true, '250.50');
 
+
+
+INSERT INTO Person VALUES
+('56385748', 'Zayne', 'Null', 'Snow', '123 Asko', 'L1Q2QA', 'Linkon City', 'Woah Prov', 'Woah Country'),
+('56385749', 'Ayne', 'Null', 'Snowy', '123 Aski', 'L1Q2QB', 'Linkon City', 'Woah Prov', 'Woah Country'),
+('56385779', 'Vanny', 'Null', 'Joke', '123 Funny Street', 'K1P2QB', 'Laugh City', 'Smile Prov', 'Happy Country');
+
+INSERT INTO Customer VALUES ('56385748'), ('56385749'), ('56385779');
+
+INSERT INTO Booking VALUES
+-- ('56385748', 'Carlton', 1, '123A', true, 0, '12:15', '2025-04-17', '17:15', '2025-04-19', 'pending'); --should work since first one so no conflicts
+-- ('56385749', 'Carlton', 1, '123A', true, 0, '13:00', '2025-04-17', '20:15', '2025-04-19', 'pending'); -- shouldn't work due to trigger
+('56385779', 'Carlton', 1, '123A', true, 0, '12:15', '2025-04-20', '7:15', '2025-04-24', 'pending'); --should work since no conflicts

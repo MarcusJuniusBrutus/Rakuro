@@ -1,4 +1,4 @@
-package PACKAGE_NAME.com.demo;
+package com.demo;
 
 /**
  * An enumeration class to hold the three possible states of a Booking (PENDING, REJECTED, or APPROVED).
