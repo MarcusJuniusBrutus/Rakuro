@@ -33,6 +33,4 @@ public class Customer {
         return "<ul>"
                 + "<li>SSN= " + SSN + "</li>";
     }
-
-
 }
