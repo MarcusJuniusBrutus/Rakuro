@@ -195,5 +195,47 @@ public class RoomService {
         }
         db.close();
     }
+
+    public static void main(String[] args) {
+        try {
+            RoomService service = new RoomService();
+
+            // Test getRooms
+            List<Room> allRooms = service.getRooms();
+            System.out.println("All Rooms:");
+            for (Room room : allRooms) {
+                System.out.println(room);
+            }
+
+            // Test getAvailableRooms (replace these values with actual valid data)
+            List<Room> availableRooms = service.getAvailableRooms(
+                    "Canada",          // country
+                    "Ontario",         // province
+                    "Toronto",         // city
+                    "Marriott",        // hotel_chain_name
+                    "2",               // room_capacity
+                    "300",             // upperbound_price
+                    "4",               // rating
+                    "100",             // total_number_of_rooms
+                    "2025-04-10",      // start_date
+                    "14:00:00",        // start_time
+                    "2025-04-15",      // end_date
+                    "11:00:00"         // end_time
+            );
+
+            System.out.println("\nAvailable Rooms:");
+            for (Room room : availableRooms) {
+                System.out.println(room);
+            }
+
+            // Test damage report (optional)
+            service.createRoomDamagesReport("Marriott", "1", "101", "TV not working");
+
+            System.out.println("\nDamage report added successfully!");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
 
