@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en-CA">
+
+<head>
+	<meta charset="UTF-8">
+	<!--find_rooms.html-->
+	<!--#99ccff, #0066cc, #006666, #4d0099, #4d004d-->
+	<title> Find Rooms </title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<style>
+	.center {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.left {
+		display: block;
+		margin-left: auto;
+	}
+
+	.right {
+		display: block;
+		margin-right: auto;
+	}
+
+	th, table {
+		width: 240px;
+		text-align: center;
+		font-family: Verdana;
+		font-size: 23px;
+		color: #006666;
+		border: 5px solid #0066cc;
+		border-collapse: collapse;
+	}
+
+	.row {
+		display: flex;
+	}
+
+	.column {
+		flex: 50%;
+		padding: 10px;
+	}
+</style>
+
+<script>
+	function get_rooms() {}
+</script>
+
+</head>
+
+<body style="background-color:#99ccff">
+
+	<h1 style="text-align: center; font-family: Verdana; font-size: 54px; color: 
+#0066cc">
+		Rakuro Hotel Website
+	</h1>
+
+	<table class="center" style="width: 720px">
+		<tr>
+			<th><a href="index.html">Home</a></th>
+			<th>Find Rooms</th>
+			<th><a href="view_bookings.html">View Bookings</a></th>
+			<th><a href="customer_register.html">Sign Up</a></th>
+		</tr>
+	</table>
+	<br>
+
+	<h3 style="text-align: center; font-family: Verdana; font-size: 31px; color: #4d0099; margin: 0px 100px 20px 100px">
+		Rakuro Room Finder
+	</h3>
+	
+	<div style="text-align: center; font-family: Verdana; font-size: 23px; color: #4d004d; margin: 0px 100px 50px 100px">
+		Here you can input information to search for Rooms. Once you have entered all the information to wish to search by, press Submit and all available Rooms fitting your crtieria will be shown to you.
+	</div>
+	
+	<table><tr><th>
+	<form style="text-align: left; font-family: Verdana; font-size: 18px; color: #4d004d; margin: 50px 100px 50px 100px", name= "input">
+		<div><b> Country: <br></b>
+			<textarea style="font-size: 18px" name= "country_input" rows=1 cols=20></textarea><br>
+		</div>
+		<div><b> Province: <br></b>
+			<textarea style="font-size: 18px" name= "province_input" rows=1 cols=20></textarea><br>
+		</div>
+		<div><b> City: <br></b>
+			<textarea style="font-size: 18px" name= "city_input" rows=1 cols=20></textarea><br>
+		</div>
+		<div><b> Hotel Chain Name: <br></b>
+			<textarea style="font-size: 18px" name= "hotel_chain_name_input" rows=1 cols=20></textarea><br>
+		</div>
+		<div><b> Room Capacity: <br></b>
+			<textarea style="font-size: 18px" name= "capacity_input" rows=1 cols=20></textarea><br>
+		</div>
+		<div><b> Upper bound for Price: <br></b>
+			<textarea style="font-size: 18px" name= "upper_price_input" rows=1 cols=20></textarea><br>
+		</div>
+		<div><b> Rating for the Hotel: <br></b>
+			<textarea style="font-size: 18px" name= "rating_input" rows=1 cols=20></textarea><br>
+		</div>
+		<div><b> Total Number of Rooms in the Hotel: <br></b>
+			<textarea style="font-size: 18px" name= "total_rooms_input" rows=1 cols=20></textarea><br>
+		</div>
+		<div><b> Start Date: <br></b>
+			<input type="date" name="start_date_input" style="font-size: 18px"><br>
+		</div>
+		<div><b> Start Time: <br></b>
+			<input type="time" name="start_time_input" style="font-size: 18px"><br>
+		</div>
+		<div><b> End Date: <br></b>
+			<input type="date" name="end_date_input" style="font-size: 18px"><br>
+		</div>
+		<div><b> End Time: <br></b>
+			<input type="time" name="end_time_input" style="font-size: 18px"><br>
+		</div>
+			<input type="button" name="submit" value="Submit" onClick="get_rooms()">
+	</form></th>
+	<!-- Insert result column here -->
+	</tr></table>
+
+</body>
+</html>

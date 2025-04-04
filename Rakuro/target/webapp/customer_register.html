@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en-CA">
+
+<head>
+	<meta charset="UTF-8">
+	<!--customer_register.html-->
+	<!--#99ccff, #0066cc, #006666, #4d0099, #4d004d-->
+	<title> Sign Up </title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<style>
+	.center {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.left {
+		display: block;
+		margin-left: auto;
+	}
+
+	.right {
+		display: block;
+		margin-right: auto;
+	}
+
+	th, table {
+		width: 240px;
+		text-align: center;
+		font-family: Verdana;
+		font-size: 23px;
+		color: #006666;
+		border: 5px solid #0066cc;
+		border-collapse: collapse;
+	}
+
+	.row {
+		display: flex;
+	}
+
+	.column {
+		flex: 50%;
+		padding: 10px;
+	}
+</style>
+
+<script>
+	function end() {}
+</script>
+
+</head>
+
+<body style="background-color:#99ccff">
+
+	<h1 style="text-align: center; font-family: Verdana; font-size: 54px; color: 
+#0066cc">
+		Rakuro Hotel Website
+	</h1>
+
+	<table class="center" style="width: 720px">
+		<tr>
+			<th><a href="rakuro.html">Home</a></th>
+			<th><a href="find_rooms.html">Find Rooms</a></th>
+			<th><a href="view_bookings.html">View Bookings</a></th>
+			<th>Sign Up</th>
+		</tr>
+	</table>
+	<br>
+
+	<h3 style="text-align: center; font-family: Verdana; font-size: 31px; color: #4d0099; margin: 0px 100px 20px 100px">
+		Rakuro Registration Page
+	</h3>
+	
+	<div style="text-align: center; font-family: Verdana; font-size: 23px; color: #4d004d; margin: 0px 100px 50px 100px">
+		Here you can register for an account at Rakuro. Using this account, you can then book any and all available rooms. Note that the address asked for is your own personal address.
+	</div>
+	
+	<form style="text-align: center; font-family: Verdana; font-size: 18px; color: #4d004d; margin: 0px 100px 50px 100px", name= "input">
+		<div><b> SSN: <br></b>
+			<textarea style="font-size: 18px", name= "ssn" rows=1 cols=20></textarea><br>
+		<div>
+		<div><b> First Name: <br></b>
+			<textarea style="font-size: 18px", name= "first_name" rows=1 cols=20></textarea><br>
+		<div>
+		<div><b> Middle Name (optional): <br></b>
+			<textarea style="font-size: 18px", name= "middle_name" rows=1 cols=20></textarea><br>
+		<div>
+		<div><b> Last Name: <br></b>
+			<textarea style="font-size: 18px", name= "last_name" rows=1 cols=20></textarea><br>
+		<div>
+		<div><b> Street: <br></b>
+			<textarea style="font-size: 18px", name= "street" rows=1 cols=20></textarea><br>
+		<div>
+		<div><b> City: <br></b>
+			<textarea style="font-size: 18px", name= "city" rows=1 cols=20></textarea><br>
+		<div>
+		<div><b> Province: <br></b>
+			<textarea style="font-size: 18px", name= "province" rows=1 cols=20></textarea><br>
+		<div>
+		<div><b> Country: <br></b>
+			<textarea style="font-size: 18px", name= "country" rows=1 cols=20></textarea><br>
+		<div>
+		<div><b> Postal Code: <br></b>
+			<textarea style="font-size: 18px", name= "postal_code" rows=1 cols=20></textarea><br>
+		<div>
+		<input type="button" name="Submit" value="Submit" onClick="end()">
+	</form>
+
+</body>
+</html>

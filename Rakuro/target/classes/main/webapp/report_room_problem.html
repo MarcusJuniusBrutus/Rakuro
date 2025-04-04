@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en-CA">
+
+<head>
+	<meta charset="UTF-8">
+	<!--report_room_problem.html-->
+	<!--#99ccff, #0066cc, #006666, #4d0099, #4d004d, #85e0e0-->
+	<title> Report Room Problem </title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<style>
+	.center {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.left {
+		display: block;
+		margin-left: auto;
+	}
+
+	.right {
+		display: block;
+		margin-right: auto;
+	}
+
+	th, table {
+		width: 240px;
+		text-align: center;
+		font-family: Verdana;
+		font-size: 23px;
+		color: #006666;
+		border: 5px solid #0066cc;
+		border-collapse: collapse;
+	}
+
+	.row {
+		display: flex;
+	}
+
+	.column {
+		flex: 50%;
+		padding: 10px;
+	}
+</style>
+
+<script>
+	function report_problem() {}
+</script>
+
+</head>
+
+<body style="background-color:#85e0e0">
+
+	<h1 style="text-align: center; font-family: Verdana; font-size: 54px; color: 
+#0066cc">
+		Rakuro Employee Website
+	</h1>
+
+	<table class="center" style="width: 720px">
+		<tr>
+			<th><a href="employee_rakuro.html">Home</a></th>
+			<th><a href="create_booking.html">Create Booking</a></th>
+			<th><a href="modify_booking.html">Modify Booking</a></th>
+			<th>Report Room Problem</th>
+		</tr>
+	</table>
+	<br>
+
+	<h3 style="text-align: center; font-family: Verdana; font-size: 31px; color: #4d0099; margin: 0px 100px 20px 100px">
+		Employee Reporter
+	</h3>
+	
+	<div style="text-align: center; font-family: Verdana; font-size: 23px; color: #4d004d; margin: 0px 100px 50px 100px">
+		Here you can report any problems found in any room. Please do so so that we can get to fixing any inconveniences as fast as possible.
+	</div>
+	
+	<form style="text-align: center; font-family: Verdana; font-size: 18px; color: #4d004d; margin: 50px 100px 50px 100px", name= "input">
+		<div><b> Hotel Chain Name: <br></b>
+			<textarea style="font-size: 18px", name= "hotel_chain_name" rows=1 cols=20></textarea><br>
+		<div>
+		<div><b> Hotel_number: <br></b>
+			<textarea style="font-size: 18px", name= "hotel_number" rows=1 cols=20></textarea><br>
+		<div>
+		<div><b> Room Number: <br></b>
+			<textarea style="font-size: 18px", name= "room_number" rows=1 cols=20></textarea><br>
+		<div>
+		<div><b> Problem/Damage: <br></b>
+			<textarea style="font-size: 18px", name= "problem" rows=1 cols=20></textarea><br>
+		<div>
+		<input type="button" name="submit" value="Submit" onClick="report_problem()">
+	</form>
+
+</body>
+</html>
