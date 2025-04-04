@@ -93,6 +93,4 @@ public class Booking {
                 + "<li>end_date= " + end_date + "</li>"
                 + "<li>status= " + status + "</li>";
     }
-
-
 }
