@@ -88,10 +88,12 @@ CREATE TABLE Archived_Booking(
     archive_id SERIAL PRIMARY KEY,
     booking_number VARCHAR(50) NOT NULL,
     SSN VARCHAR(20) NOT NULL,
-    room_number INT NOT NULL,
+    room_number VARCHAR(5) NOT NULL,
     was_paid_for BOOLEAN DEFAULT FALSE,
-    date DATE NOT NULL,
-    time TIME NOT NULL,
+    start_time TIME NOT NULL,
+    start_date DATE NOT NULL,
+    end_time TIME NOT NULL,
+    end_date DATE NOT NULL,
     hotel_chain_name VARCHAR(20) NOT NULL,
     street VARCHAR(50) NOT NULL,
     postal_code VARCHAR(6) NOT NULL,
@@ -211,12 +213,7 @@ CREATE TABLE Booking(
     end_time TIME NOT NULL,
     end_date DATE NOT NULL,
     status VARCHAR(20) NOT NULL,
-    PRIMARY KEY(
-        SSN,
-        hotel_chain_name,
-        hotel_number,
-        room_number
-    ),
+    PRIMARY KEY(booking_number),
     FOREIGN KEY(SSN)
         REFERENCES Customer(SSN)
         ON DELETE CASCADE,

@@ -73,7 +73,7 @@
 	</h3>
 	
 	<div style="text-align: center; font-family: Verdana; font-size: 23px; color: #4d004d; margin: 0px 100px 50px 100px">
-		Here you can input information to search for Rooms. Once you have entered all the information to wish to search by, press Submit and all available Rooms fitting your crtieria will be shown to you.
+		Here you can input information to search for Rooms. Once you have entered all the information to wish to search by, press Submit and all available Rooms fitting your criteria will be shown to you.
 	</div>
 	
 	<table><tr><th>
@@ -91,16 +91,16 @@
 			<textarea style="font-size: 18px" name= "hotel_chain_name_input" rows=1 cols=20></textarea><br>
 		</div>
 		<div><b> Room Capacity: <br></b>
-			<textarea style="font-size: 18px" name= "capacity_input" rows=1 cols=20></textarea><br>
+			<input type="number" min=1 step=1 style="font-size: 18px", name= "room_capacity_input" rows=1 cols=20></textarea><br>
 		</div>
 		<div><b> Upper bound for Price: <br></b>
-			<textarea style="font-size: 18px" name= "upper_price_input" rows=1 cols=20></textarea><br>
+			<input type="number" min=0 style="font-size: 18px" name= "upper_price_input" rows=1 cols=20/><br>
 		</div>
 		<div><b> Rating for the Hotel: <br></b>
-			<textarea style="font-size: 18px" name= "rating_input" rows=1 cols=20></textarea><br>
+			<input type="number" min=1 max=5 step=1 style="font-size: 18px" name= "rating_input" rows=1 cols=20 /><br>
 		</div>
 		<div><b> Total Number of Rooms in the Hotel: <br></b>
-			<textarea style="font-size: 18px" name= "total_rooms_input" rows=1 cols=20></textarea><br>
+			<input type="number" min=1 step=1 style="font-size: 18px" name= "total_rooms_input" rows=1 cols=20 /><br>
 		</div>
 		<div><b> Start Date: <br></b>
 			<input type="date" name="start_date_input" style="font-size: 18px"><br>

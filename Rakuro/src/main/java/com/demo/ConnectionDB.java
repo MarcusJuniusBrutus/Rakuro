@@ -1,16 +1,14 @@
-package PACKAGE_NAME.com.demo;
+package com.demo;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 
 public class ConnectionDB {
 
     /* Database connection settings, change dbName, dbusername, dbpassword */
-    private final String ipAddress = "127.0.0.1";
+    private final String ipAddress = "localhost";
     private final String dbServerPort = "5432";
-    private final String dbName = "postgres";
+    private final String dbName = "Rakuro";
     private final String dbusername = "postgres";
     private final String dbpassword = "Kiritoismine1!";
 
@@ -53,5 +51,24 @@ public class ConnectionDB {
                     + e.getMessage());
         }
 
+    }
+
+    public static void main(String[] args) throws Exception {
+        ConnectionDB CDB = new ConnectionDB();
+        Connection CDBConnect = CDB.getConnection();
+        Statement st = CDBConnect.createStatement();
+
+        //works:
+//        ResultSet rs = st.executeQuery("SELECT * FROM information_schema.tables WHERE table_schema = 'Rakuro' AND table_name = 'person';");
+//        if (rs.next()) {
+//            System.out.println("Table exists!");
+//        } else {
+//            System.out.println("Table does not exist.");
+//        }
+
+        ResultSet rs = st.executeQuery("SELECT * FROM Rakuro.person;");
+        rs.next();
+        System.out.println(rs.getString(1));
+        System.out.println(rs.getString(1));
     }
 }
