@@ -1,4 +1,4 @@
-SET search_path = "Rakuro2.0";
+SET search_path = "Rakuro";
 
 INSERT INTO Person (SSN, first_name, middle_name, last_name, street, postal_code, city, province,country) VALUES
 ('047189473', 'Xavier', NULL, 'Lumiere', '45 Light Street', 'K1L6Y7', 'Philos', 'Wanderer', 'Space'),
