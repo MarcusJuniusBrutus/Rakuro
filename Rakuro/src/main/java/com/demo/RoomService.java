@@ -39,6 +39,7 @@ public class RoomService {
             // iterate through the result set
             while (rs.next()) {
 
+                //get information of room i in rs
                 String hotel_chain_name = rs.getString("hotel_chain_name");
                 Integer hotel_humber = rs.getInt("hotel_number");
                 String room_number = rs.getString("room_number");
@@ -47,8 +48,10 @@ public class RoomService {
                 boolean is_extendable = rs.getBoolean("is_extendable");
                 double price = rs.getDouble("price");
 
+                //create a room with information given
                 Room new_room = new Room(hotel_chain_name, hotel_humber, room_number, capacity, view_type, is_extendable, price);
 
+                //add to list of rooms
                 rooms.add(new_room);
             }
 
@@ -59,13 +62,11 @@ public class RoomService {
             con.close();
             db.close();
 
-            // return the grades retrieved from database
+            // return the rooms retrieved from database
             return rooms;
         } catch (Exception e) {
             // throw any errors occurred
             throw new Exception(e.getMessage());
         }
     }
-
-
 }
