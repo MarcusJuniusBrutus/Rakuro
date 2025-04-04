@@ -1,8 +1,8 @@
-package PACKAGE_NAME.com.demo;
+package main.java.com.demo;
 
 import java.sql.Date;
 import java.sql.Time;
-
+import PACKAGE_NAME.com.demo.Status;
 
 
 /**
