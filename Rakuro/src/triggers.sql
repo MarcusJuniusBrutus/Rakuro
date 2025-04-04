@@ -45,18 +45,53 @@ INSERT INTO Booking VALUES
 -- Trigger #2:
 SET search_path = 'Rakuro'; --change name to the path you have
 
-CREATE FUNCTION CHECK_ROOM_AVAILABLE () RETURNS TRIGGER LANGUAGE 'plpgsql' AS $$ --creates function that checks room avalibiltiy and returns trigger
-declare NUMBER_ROOMS_CONFLICT INT; -- Declare a variable to store the count for it to work
+CREATE FUNCTION ADD_ARCHIVED () RETURNS TRIGGER LANGUAGE 'plpgsql' AS $$ --creates function that adds archives and returns trigger
+declare  --no variables declared
 begin
-    SELECT COUNT(*) INTO NUMBER_ROOMS_CONFLICT FROM booking WHERE NEW.room_number = room_number --counts number of bookings that overlap with booking we want to insert
-       AND (START_DATE || ' ' || START_TIME)::TIMESTAMP < (NEW.END_DATE || ' ' || NEW.END_TIME)::TIMESTAMP
-       AND (END_DATE || ' ' || END_TIME)::TIMESTAMP > (NEW.START_DATE || ' ' || NEW.START_TIME)::TIMESTAMP;
+-- add entry to archived booking table
+    INSERT INTO archived_booking (
+            booking_number,
+            ssn,
+            room_number,
+            was_paid_for,
+            start_date,
+            start_time,
+            end_date,
+            end_time,
+            hotel_chain_name,
+            street,
+            postal_code,
+            city,
+            province,
+            country,
+            first_name,
+            middle_name,
+            last_name,
+            status
+        )
+        SELECT --use attributes that are getting inserted
+            NEW.booking_number,
+            NEW.SSN,
+            NEW.room_number
+            NEW.is_paid_for,
+            NEW.start_date,
+            NEW.start_time,
+            NEW.end_date,
+            NEW.end_time,
+            NEW.hotel_chain_name,
+            c.street,
+            c.postal_code,
+            c.city,
+            c.province,
+            c.country,
+            c.first_name,
+            c.middle_name,
+            c.last_name,
+            NEW.status
+        FROM Customer c
+        WHERE c.SSN = NEW.SSN;
 
-       IF NUMBER_ROOMS_CONFLICT > 0 THEN --there is at least one conflict
-	   raise exception 'Sorry, this room is not available for the selected times'; --send message saying booking cannot be created
-	   return null; --insertion will not take place
-     END IF;
-	 return new; --insertion will take place due to no conflicts
+        RETURN NEW;
 end;
 $$; --function ends here
 
