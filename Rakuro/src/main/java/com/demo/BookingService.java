@@ -1,9 +1,10 @@
-package com.demo;
+package main.java.com.demo;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import Booking;
+import PACKAGE_NAME.com.demo.ConnectionDB;
+import PACKAGE_NAME.com.demo.Booking;
 
 public class BookingService {
 
