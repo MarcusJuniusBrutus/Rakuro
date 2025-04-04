@@ -79,16 +79,16 @@
 	<form style="text-align: center; font-family: Verdana; font-size: 18px; color: #4d004d; margin: 50px 100px 50px 100px", name= "input">
 		<div><b> Hotel Chain Name: <br></b>
 			<textarea style="font-size: 18px", name= "hotel_chain_name" rows=1 cols=20></textarea><br>
-		<div>
+		</div>
 		<div><b> Hotel_number: <br></b>
-			<textarea style="font-size: 18px", name= "hotel_number" rows=1 cols=20></textarea><br>
-		<div>
+			<input type="number" min=0 step=1 style="font-size: 18px", name= "hotel_number" rows=1 cols=20><br>
+		</div>
 		<div><b> Room Number: <br></b>
 			<textarea style="font-size: 18px", name= "room_number" rows=1 cols=20></textarea><br>
-		<div>
+		</div>
 		<div><b> Problem/Damage: <br></b>
 			<textarea style="font-size: 18px", name= "problem" rows=1 cols=20></textarea><br>
-		<div>
+		</div>
 		<input type="button" name="submit" value="Submit" onClick="report_problem()">
 	</form>
 
