@@ -46,7 +46,7 @@
 </style>
 
 <script>
-	function end() {}
+	function get_rooms() {}
 </script>
 
 </head>
@@ -60,7 +60,7 @@
 
 	<table class="center" style="width: 720px">
 		<tr>
-			<th><a href="rakuro.html">Home</a></th>
+			<th><a href="index.html">Home</a></th>
 			<th>Find Rooms</th>
 			<th><a href="view_bookings.html">View Bookings</a></th>
 			<th><a href="customer_register.html">Sign Up</a></th>
@@ -79,42 +79,42 @@
 	<table><tr><th>
 	<form style="text-align: left; font-family: Verdana; font-size: 18px; color: #4d004d; margin: 50px 100px 50px 100px", name= "input">
 		<div><b> Country: <br></b>
-			<textarea style="font-size: 18px" name= "country" rows=1 cols=20></textarea><br>
-		<div>
+			<textarea style="font-size: 18px" name= "country_input" rows=1 cols=20></textarea><br>
+		</div>
 		<div><b> Province: <br></b>
-			<textarea style="font-size: 18px" name= "province" rows=1 cols=20></textarea><br>
-		<div>
+			<textarea style="font-size: 18px" name= "province_input" rows=1 cols=20></textarea><br>
+		</div>
 		<div><b> City: <br></b>
-			<textarea style="font-size: 18px" name= "city" rows=1 cols=20></textarea><br>
-		<div>
+			<textarea style="font-size: 18px" name= "city_input" rows=1 cols=20></textarea><br>
+		</div>
 		<div><b> Hotel Chain Name: <br></b>
-			<textarea style="font-size: 18px" name= "hotel_chain_name" rows=1 cols=20></textarea><br>
-		<div>
+			<textarea style="font-size: 18px" name= "hotel_chain_name_input" rows=1 cols=20></textarea><br>
+		</div>
 		<div><b> Room Capacity: <br></b>
-			<textarea style="font-size: 18px" name= "capacity" rows=1 cols=20></textarea><br>
-		<div>
+			<textarea style="font-size: 18px" name= "capacity_input" rows=1 cols=20></textarea><br>
+		</div>
 		<div><b> Upper bound for Price: <br></b>
-			<textarea style="font-size: 18px" name= "upper_price" rows=1 cols=20></textarea><br>
-		<div>
+			<textarea style="font-size: 18px" name= "upper_price_input" rows=1 cols=20></textarea><br>
+		</div>
 		<div><b> Rating for the Hotel: <br></b>
-			<textarea style="font-size: 18px" name= "rating" rows=1 cols=20></textarea><br>
-		<div>
+			<textarea style="font-size: 18px" name= "rating_input" rows=1 cols=20></textarea><br>
+		</div>
 		<div><b> Total Number of Rooms in the Hotel: <br></b>
-			<textarea style="font-size: 18px" name= "total_rooms" rows=1 cols=20></textarea><br>
-		<div>
+			<textarea style="font-size: 18px" name= "total_rooms_input" rows=1 cols=20></textarea><br>
+		</div>
 		<div><b> Start Date: <br></b>
-			<input type="date" name="start_date" style="font-size: 18px"><br>
+			<input type="date" name="start_date_input" style="font-size: 18px"><br>
 		</div>
 		<div><b> Start Time: <br></b>
-			<input type="time" name="start_time" style="font-size: 18px"><br>
+			<input type="time" name="start_time_input" style="font-size: 18px"><br>
 		</div>
 		<div><b> End Date: <br></b>
-			<input type="date" name="end_date" style="font-size: 18px"><br>
+			<input type="date" name="end_date_input" style="font-size: 18px"><br>
 		</div>
 		<div><b> End Time: <br></b>
-			<input type="time" name="end_time" style="font-size: 18px"><br>
+			<input type="time" name="end_time_input" style="font-size: 18px"><br>
 		</div>
-		<input type="button" name="Submit" value="Submit" onClick="end()">
+			<input type="button" name="submit" value="Submit" onClick="get_rooms()">
 	</form></th>
 	<!-- Insert result column here -->
 	</tr></table>

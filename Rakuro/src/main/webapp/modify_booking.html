@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<!--modify_booking.html-->
-	<!--#99ccff, #0066cc, #006666, #4d0099, #4d004d-->
+	<!--#99ccff, #0066cc, #006666, #4d0099, #4d004d, #85e0e0-->
 	<title> Modify Booking </title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
@@ -46,12 +46,14 @@
 </style>
 
 <script>
-	function end() {}
+	function get_booking() {}
+	function modify_booking() {}
+	function delete_booking() {}
 </script>
 
 </head>
 
-<body style="background-color:#99ccff; align: center">
+<body style="background-color:#85e0e0; align: center">
 
 	<h1 style="text-align: center; font-family: Verdana; font-size: 54px; color: 
 #0066cc">
@@ -73,7 +75,7 @@
 	</h3>
 	
 	<div style="text-align: center; font-family: Verdana; font-size: 23px; color: #4d004d; margin: 0px 100px 50px 100px">
-		Here you can modify existing bookings. If you wish to not modify anything, press on cancel. If you wish to finalize the modifications, press on submit. If you wish to delete the booking entirely, press on delete booking. Please keep in mind that all modifications and deletions are final.
+		Here you can modify existing bookings. First, input the booking number of the booking you wish to modify in the left column and click on Submit. Then, the details of the booking will appear on the right column. Modify any parameters you wish and then click on Modify to finalize the changes. If you wish to not change anything, simply refresh the page. If you wish to delete the booking entirely, click on Delete. All changes/deletions are final.
 	</div>
 	
 	<table style="text-align: center"><tr><th>
@@ -81,10 +83,43 @@
 		<div><b> Booking Number: <br></b>
 			<textarea style="font-size: 18px", name= "booking_number" rows=1 cols=20></textarea><br>
 		<div>
-		<input type="button" name="Submit" value="Submit" onClick="end()">
-	</form></th>
-	<!-- Insert result column here -->
-	</tr></table>
+		<input type="button" name="submit" value="Submit" onClick="get_booking()">
+	</form></th><th>
+	<form style="text-align: left; font-family: Verdana; font-size: 18px; color: #4d004d; margin: 50px 100px 50px 100px", name= "output">
+		<div><b> SSN: <br></b>
+			<textarea style="font-size: 18px", name= "ssn" rows=1 cols=20></textarea><br>
+		</div>
+		<div><b> Hotel Chain Name: <br></b>
+			<textarea style="font-size: 18px", name= "hotel_chain_name" rows=1 cols=20></textarea><br>
+		</div>
+		<div><b> Hotel Number: <br></b>
+			<textarea style="font-size: 18px", name= "hotel_number" rows=1 cols=20></textarea><br>
+		</div>
+		<div><b> Room Number: <br></b>
+			<textarea style="font-size: 18px", name= "room_number" rows=1 cols=20></textarea><br>
+		</div>
+		<div><b> Has payment been received: <br></b>
+			<input type="checkbox" style="font-size: 18px", name= "is_paid_for" rows=1 cols=20></textarea><br>
+		</div>
+		<div><b> Start Date: <br></b>
+			<input type="date" name="start_date" style="font-size: 18px"><br>
+		</div>
+		<div><b> Start Time: <br></b>
+			<input type="time" name="start_time" style="font-size: 18px"><br>
+		</div>
+		<div><b> End Date: <br></b>
+			<input type="date" name="end_date" style="font-size: 18px"><br>
+		</div>
+		<div><b> End Time: <br></b>
+			<input type="time" name="end_time" style="font-size: 18px"><br>
+		</div>
+		<div><b> Status: <br></b>
+			<textarea style="font-size: 18px", name= "status" rows=1 cols=20></textarea><br>
+		</div>
+		<input type="button" name="modify" value="Modify" onClick="modify_booking()">
+		<input type="button" name="delete" value="Delete" onClick="delete_booking()">
+	</form>
+	</th></tr></table>
 
 </body>
 </html>
