@@ -18,7 +18,7 @@ public class BookingService {
         String sql = "SELECT * FROM \"Rakuro\".booking WHERE booking_number = ?;";
         // database connection object
         ConnectionDB db = new ConnectionDB();
-
+      
         // try connect to database, catch any exceptions
         try {
             // prepare the statement
@@ -79,7 +79,7 @@ public class BookingService {
 	* @throws Exception when trying to connect to database
 	*/
 	public boolean createBooking(String ssn, String hotel_chain_name, String hotel_number, String room_number, String start_date, String start_time, String end_date, String end_time) throws Exception {
-        Connection con = null;
+
 
 		//randomly generate a booking_number of size 6 and made up of alphanumeric characters
 		String booking_number = generate_random_string(6);
@@ -97,6 +97,7 @@ public class BookingService {
 
             // prepare statement
             PreparedStatement stmt = con.prepareStatement(sql);
+
 			stmt.setString(1, ssn);
 			stmt.setString(2, hotel_chain_name);
 			stmt.setString(3, room_number);
@@ -178,6 +179,7 @@ public class BookingService {
 			stmt.setString(5, status);
 			stmt.setString(6, booking_number);
 
+
             // execute the query
             stmt.executeUpdate();
 
@@ -226,7 +228,6 @@ public class BookingService {
 			throw new Exception(e.getMessage());
 		}
 	}
-
     /**
      * Method to delete by booking_number a booking
      *
@@ -249,6 +250,7 @@ public class BookingService {
 
             // prepare statement
             PreparedStatement stmt = con.prepareStatement(sql);
+
 			stmt.setString(1, booking_number);
 
             // execute the query

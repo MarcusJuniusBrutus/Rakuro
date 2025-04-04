@@ -87,12 +87,15 @@
 
 					console.log("hello");
 
+					const hello = 10;
+
 					$.ajax({
-						url: 'http://localhost:63342/api/hello',
+						url: `http://localhost:8080/api/hello?param=${hello}&param2=${hello + 10}`,
 						type: "GET",
 						success: function(data){
 						 //alert(data[message]);
-						 console(JSON.parse(data))
+						 console.log(data);
+
 					 },
 
 					 error: function(data){

@@ -14,7 +14,7 @@ public enum Status {
     /**
      * An active status: The person has checked in and is currently staying at the hotel. The booking is now a renting.
      */
-    ACITVE,
+    ACTIVE,
 
     /**
      * A completed status: The customer has completed their stay at the hotel.
