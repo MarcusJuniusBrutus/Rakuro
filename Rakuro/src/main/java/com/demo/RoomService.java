@@ -1,4 +1,4 @@
-package PACKAGE_NAME.com.demo;
+package main.java.com.demo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,7 +27,7 @@ public class RoomService {
         // data structure to keep all rooms retrieved from database
         List<Room> rooms = new ArrayList<>();
 
-        // try connect to database, catch any exceptions
+        //try to connect to database, catch any exceptions
         try (Connection con = db.getConnection()) {
             // prepare the statement
             PreparedStatement stmt = con.prepareStatement(sql);
@@ -49,7 +49,8 @@ public class RoomService {
                 double price = rs.getDouble("price");
 
                 //create a room with information given
-                Room new_room = new Room(hotel_chain_name, hotel_humber, room_number, capacity, view_type, is_extendable, price);
+                Room new_room = new Room(hotel_chain_name, hotel_humber, room_number,
+                                         capacity, view_type, is_extendable, price);
 
                 //add to list of rooms
                 rooms.add(new_room);
