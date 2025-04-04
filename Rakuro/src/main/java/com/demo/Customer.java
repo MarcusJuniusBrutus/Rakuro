@@ -35,7 +35,7 @@ public class Customer {
     }
 
     /**
-     * Method that to creates a Person object and adds them to the db
+     * Method that takes the  and adds them to the db
      *
      * @param SSN SSN of the person
      * @param first_name first name of Person object
