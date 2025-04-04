@@ -45,8 +45,8 @@ INSERT INTO Booking VALUES
 -- Trigger #2:
 SET search_path = 'Rakuro'; --change name to the path you have
 
-CREATE FUNCTION CHECK_ROOM_AVAILABLE () RETURNS TRIGGER LANGUAGE 'plpgsql' AS $$ --creates function that checks room avalibiltiy and returns trigger
-declare NUMBER_ROOMS_CONFLICT INT; -- Declare a variable to store the count for it to work
+CREATE FUNCTION ADD_ARCHIVED () RETURNS TRIGGER LANGUAGE 'plpgsql' AS $$ --creates function that adds archives and returns trigger
+declare  --no variables declared
 begin
     SELECT COUNT(*) INTO NUMBER_ROOMS_CONFLICT FROM booking WHERE NEW.room_number = room_number --counts number of bookings that overlap with booking we want to insert
        AND (START_DATE || ' ' || START_TIME)::TIMESTAMP < (NEW.END_DATE || ' ' || NEW.END_TIME)::TIMESTAMP

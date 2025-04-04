@@ -88,7 +88,7 @@ CREATE TABLE Archived_Booking(
     archive_id SERIAL PRIMARY KEY,
     booking_number VARCHAR(50) NOT NULL,
     SSN VARCHAR(20) NOT NULL,
-    room_number INT NOT NULL,
+    room_number VARCHAR(5) NOT NULL,
     was_paid_for BOOLEAN DEFAULT FALSE,
     date DATE NOT NULL,
     time TIME NOT NULL,
