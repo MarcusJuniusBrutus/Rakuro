@@ -169,10 +169,11 @@ public class RoomService {
     /**
      * Adds a report of any problems or damages of a specific room and saves it in the db
      *
-     * @param country the country the customer wants to find available rooms in
-     * @param province the province the customer wants to find available rooms in
-     * @param city the city the customer wants to find available rooms in
-     * @param hotel_chain_name the country the customer wants to find available rooms in
+     * @param hotel_chain_name hotel chain name of specified hotel
+     * @param hotel_number hotel number of specified hotel
+     * @param room_number the room number the problems/damages occured
+     * @param problem_damages the description of the problem/damages in the room specified
+     * @throws Exception when trying to connect to database
      */
 
     public void createRoomDamagesReport(String hotel_chain_name, String hotel_number, String room_number, String problem_damages) throws Exception{
