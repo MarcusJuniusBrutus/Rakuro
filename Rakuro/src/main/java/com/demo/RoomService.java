@@ -109,7 +109,10 @@ public class RoomService {
                      "           OR b.start_date > ? OR (b.start_date = ? AND b.start_time >= ?))" +
                      ")";
 
+        //connect to db
         ConnectionDB db = new ConnectionDB();
+
+        //list that is going to store all the available rooms
         List<Room> available_rooms = new ArrayList<Room>();
 
         try (Connection con = db.getConnection()) {
