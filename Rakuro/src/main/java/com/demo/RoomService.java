@@ -93,8 +93,8 @@ public class RoomService {
      * @throws Exception when trying to connect to database
      */
 
-    public List<Room> getAvailableRooms(String country, String province, String city, String hotel_chain_name, Integer room_capacity,
-                                        double upperbound_price, Integer rating, Integer total_number_of_rooms, String start_date,
+    public List<Room> getAvailableRooms(String country, String province, String city, String hotel_chain_name, String room_capacity,
+                                        String upperbound_price, String rating, String total_number_of_rooms, String start_date,
                                         String start_time, String end_date, String end_time) throws Exception {
 
         String sql = "SELECT DISTINCT r.* FROM room r " +
@@ -120,10 +120,10 @@ public class RoomService {
             stmt.setString(2, province);
             stmt.setString(3, city);
             stmt.setString(4, hotel_chain_name);
-            stmt.setInt(5, room_capacity);
-            stmt.setDouble(6, upperbound_price);
-            stmt.setInt(7, rating);
-            stmt.setInt(8, total_number_of_rooms);
+            stmt.setString(5, room_capacity);
+            stmt.setString(6, upperbound_price);
+            stmt.setString(7, rating);
+            stmt.setString(8, total_number_of_rooms);
 
             //sets booking overlap filter parameters
             //logic: excludes all bookings that do not end before we arrive or start after we leave
@@ -149,7 +149,7 @@ public class RoomService {
 
                 //create a room with information given
                 Room new_room = new Room(hotel_chain_name, hotel_humber, room_number,
-                        capacity, view_type, is_extendable, price);
+                                         capacity, view_type, is_extendable, price);
 
                 //add to list of rooms
                 available_rooms.add(new_room);
