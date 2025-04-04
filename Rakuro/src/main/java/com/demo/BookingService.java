@@ -6,7 +6,7 @@ import java.util.Random;
 public class BookingService {
 
     /**
-     * Method to get all bookings from the database given a booking_number
+     * Method to get all bookings from the database given a booking_number. If the booking_number is not found, returns null.
      *
      * @return List of bookings from database
 	 * @param booking_number the booking_number of the booking to return
@@ -15,22 +15,23 @@ public class BookingService {
     public Booking getBooking(String booking_number) throws Exception {
 
         // sql query
-        String sql = "SELECT * FROM \"Rakuro\".booking;";
+        String sql = "SELECT * FROM \"Rakuro\".booking WHERE booking_number = ?;";
         // database connection object
         ConnectionDB db = new ConnectionDB();
 
-        // data structure to keep all bookings retrieved from database
-//        List<Booking> bookings = new ArrayList<>();
-
         // try connect to database, catch any exceptions
-        try (Connection con = db.getConnection()) {
+        try {
             // prepare the statement
+			Connection con = db.getConnection();
             PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, booking_number);
 
             // get the results from executing the query
             ResultSet rs = stmt.executeQuery();
 
-            rs.next();
+			if (!rs.next())
+				return null;
+
             // create new booking object
             Booking booking = new Booking(
                     rs.getString("ssn"),
@@ -77,25 +78,15 @@ public class BookingService {
 	* @return boolean true if successfully created, false otherwise
 	* @throws Exception when trying to connect to database
 	*/
-	public boolean createBooking(String ssn, String hotel_chain_name, String hotel_number, String room_number, boolean is_paid_for, String start_date, String start_time, String end_date, String end_time) throws Exception {
+	public boolean createBooking(String ssn, String hotel_chain_name, String hotel_number, String room_number, String start_date, String start_time, String end_date, String end_time) throws Exception {
         Connection con = null;
 
 		//randomly generate a booking_number of size 6 and made up of alphanumeric characters
 		String booking_number = generate_random_string(6);
 
         // sql query
-        String sql = "INSERT INTO BOOKING VALUES ('" + ssn +
-		"', '" + hotel_chain_name +
-		"', " + hotel_number +
-		", '" + room_number +
-		"', " + is_paid_for +
-		", '" + booking_number +
-		"', '" + start_time +
-		"', '" + start_date +
-		"', '" + end_time +
-		"', '" + end_date +
-		"', '" + "pending" +
-		"');";
+        String sql = "INSERT INTO \"Rakuro\".BOOKING(SSN, hotel_chain_name, hotel_number, room_number, is_paid_for, booking_number, start_time, start_date, end_time, end_date, status) " +
+				"VALUES (?, ?, " + hotel_number + ", ?, ?, ?, '" + start_time + "', '" + start_date + "', '" + end_time + "', '" + end_date + "', ?);";
 
         // database connection object
         ConnectionDB db = new ConnectionDB();
@@ -106,6 +97,12 @@ public class BookingService {
 
             // prepare statement
             PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, ssn);
+			stmt.setString(2, hotel_chain_name);
+			stmt.setString(3, room_number);
+			stmt.setBoolean(4, false);
+			stmt.setString(5, booking_number);
+			stmt.setString(6, "pending");
 
             // execute the query
             stmt.executeUpdate();
@@ -114,6 +111,7 @@ public class BookingService {
             stmt.close();
 
         } catch (Exception e) {
+			e.printStackTrace();
             return false;
         } finally {
             if (con != null) con.close();
@@ -156,21 +154,13 @@ public class BookingService {
 	* @throws Exception when trying to connect to database
 	*/
 	public boolean modifyBooking(String booking_number, String ssn, String hotel_chain_name, String hotel_number, String room_number, boolean is_paid_for, String start_date, String start_time, String end_date, String end_time, String status) throws Exception {
-        Connection con = null;
+        if (!booking_exists(booking_number))
+			return false;
+
+		Connection con = null;
 
         // sql query
-        String sql = "UPDATE BOOKING SET SSN = " + ssn +
-		", hotel_chain_name = '" + hotel_chain_name +
-		"', hotel_number = " + hotel_number +
-		", room_number = '" + room_number +
-		"', is_paid_for = " + is_paid_for +
-		", start_time = '" + start_time +
-		"', start_date = '" + start_date +
-		"', end_time = '" + end_time +
-		"', end_date = '" + end_date +
-		"', status = " + status +
-		"' WHERE booking_number = " + booking_number +
-		";";
+        String sql = "UPDATE \"Rakuro\".BOOKING SET SSN = ?, hotel_chain_name = ?, hotel_number = " + hotel_number + ", room_number = ?, is_paid_for = ?, start_time = '" + start_time + "', start_date = '" + start_date + "', end_time = '" + end_time + "', end_date = '" + end_date + "', status = ? WHERE booking_number = ?;";
 
         // database connection object
         ConnectionDB db = new ConnectionDB();
@@ -181,6 +171,12 @@ public class BookingService {
 
             // prepare statement
             PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, ssn);
+			stmt.setString(2, hotel_chain_name);
+			stmt.setString(3, room_number);
+			stmt.setBoolean(4, is_paid_for);
+			stmt.setString(5, status);
+			stmt.setString(6, booking_number);
 
             // execute the query
             stmt.executeUpdate();
@@ -197,6 +193,40 @@ public class BookingService {
         return true;
 	}
 
+	private boolean booking_exists(String booking_number) throws Exception {
+		// sql query
+		String sql = "SELECT * FROM \"Rakuro\".booking WHERE booking_number = ?;";
+		// database connection object
+		ConnectionDB db = new ConnectionDB();
+
+		// try connect to database, catch any exceptions
+		try {
+			// prepare the statement
+			Connection con = db.getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, booking_number);
+
+			// get the results from executing the query
+			ResultSet rs = stmt.executeQuery();
+
+			boolean ret = true;
+			if (!rs.next())
+				ret = false;
+
+			//close the result set
+			rs.close();
+			// close the statement
+			stmt.close();
+			con.close();
+			db.close();
+
+			return ret;
+		} catch (Exception e) {
+			// throw any errors occurred
+			throw new Exception(e.getMessage());
+		}
+	}
+
     /**
      * Method to delete by booking_number a booking
      *
@@ -208,7 +238,7 @@ public class BookingService {
         Connection con = null;
 
         // sql query
-        String sql = "DELETE FROM booking WHERE booking_number = " + booking_number + ";";
+        String sql = "DELETE FROM \"Rakuro\".booking WHERE booking_number = ?;";
 
         // database connection object
         ConnectionDB db = new ConnectionDB();
@@ -219,6 +249,7 @@ public class BookingService {
 
             // prepare statement
             PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, booking_number);
 
             // execute the query
             stmt.executeUpdate();
@@ -237,6 +268,6 @@ public class BookingService {
 
     public static void main(String[] args) throws Exception {
         BookingService bs = new BookingService();
-        System.out.println(bs.getBooking("12234"));
+        System.out.println("hey");
     }
 }
