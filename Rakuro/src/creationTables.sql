@@ -211,12 +211,7 @@ CREATE TABLE Booking(
     end_time TIME NOT NULL,
     end_date DATE NOT NULL,
     status VARCHAR(20) NOT NULL,
-    PRIMARY KEY(
-        SSN,
-        hotel_chain_name,
-        hotel_number,
-        room_number
-    ),
+    PRIMARY KEY(booking_number),
     FOREIGN KEY(SSN)
         REFERENCES Customer(SSN)
         ON DELETE CASCADE,

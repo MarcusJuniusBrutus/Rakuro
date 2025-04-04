@@ -3,6 +3,7 @@ package main.java.com.demo;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import PACKAGE_NAME.com.demo.ConnectionDB;
 import PACKAGE_NAME.com.demo.Booking;
 
@@ -64,6 +65,82 @@ public class BookingService {
     }
 	
 	/**
+	* Given a bunch of booking parameters, creates a new booking. A booking_number will be generated at random and the status will be pending.
+	* @param ssn the ssn
+	* @param hotel_chain_name the hotel_chain_name
+	* @param hotel_number the hotel_number
+	* @param room_number the room_number
+	* @param is_paid_for the is_paid_for
+	* @param start_date the start_date, must be in format YYYY-MM-DD
+	* @param start_time the start_time, must be in format HH:MM:SS
+	* @param end_date the end_date, must be in format YYYY-MM-DD
+	* @param end_time the end_time, must be in format HH:MM:SS
+	* @return boolean true if successfully created, false otherwise
+	* @throws Exception when trying to connect to database
+	*/
+	public boolean createBooking(String ssn, String hotel_chain_name, String hotel_number, String room_number, boolean is_paid_for, String start_date, String start_time, String end_date, String end_time) throws Exception {
+        Connection con = null;
+		
+		//randomly generate a booking_number of size 6 and made up of alphanumeric characters
+		String booking = generate_random_string(6);
+		
+        // sql query
+        String sql = "INSERT INTO BOOKING VALUES ('" + ssn +
+		"', '" + hotel_chain_name + 
+		"', " + hotel_number + 
+		", '" + room_number + 
+		"', " + is_paid_for + 
+		", '" + booking_number +
+		"', '" + start_time + 
+		"', '" + start_date + 
+		"', '" + end_time + 
+		"', '" + end_date + 
+		"', '" + status + 
+		"');";
+
+        // database connection object
+        ConnectionDB db = new ConnectionDB();
+
+        // try connect to database, catch any exceptions
+        try {
+            con = db.getConnection();
+
+            // prepare statement
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            // execute the query
+            stmt.executeUpdate();
+
+            // close the statement
+            stmt.close();
+
+        } catch (Exception e) {
+            return false;
+        } finally {
+            if (con != null) con.close();
+        }
+
+        return true;
+	}
+	
+	/**
+	* Given a length, returns a random alphanumeric string of that length. If length <= 0, returns the empty string.
+	* @param length the length of the returned string
+	* @return String a random alphanumeric string of that length
+	*/
+	private String generate_random_string(int length) {
+		if (length <= 0) return "";
+		Random rand = new Random();
+		String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+		StringBuilder sb = new StringBuilder(length);
+		for (int i = 0; i < length; i++) {
+			int rand_int = rand.nextInt(CHARACTERS.length());
+			sb.append(CHARACTERS.charAt(rand_int));
+		}
+		return sb.toString();
+	}
+	
+	/**
 	* Given a bunch of booking parameters, changes the given booking's values to them.
 	* @param booking_number the booking to modifyBooking
 	* @param ssn the new ssn
@@ -79,7 +156,7 @@ public class BookingService {
 	* @return boolean true if successfully modified, false otherwise
 	* @throws Exception when trying to connect to database
 	*/
-	public boolean modifyBooking(String booking_number, String ssn, String hotel_chain_name, String hotel_number, String room_number, boolean is_paid_for, String start_date, String start_time, String end_date, String end_time, String status) {
+	public boolean modifyBooking(String booking_number, String ssn, String hotel_chain_name, String hotel_number, String room_number, boolean is_paid_for, String start_date, String start_time, String end_date, String end_time, String status) throws Exception {
         Connection con = null;
 
         // sql query
