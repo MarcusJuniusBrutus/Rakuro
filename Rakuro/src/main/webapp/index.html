@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<!--Rakuro.html-->
+	<!--index.html-->
 	<!--#99ccff, #0066cc, #006666, #4d0099, #4d004d-->
 	<title> Rakuro Hotel Website </title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -86,12 +86,15 @@
 
 					console.log("hello");
 
+					const hello = 10;
+
 					$.ajax({
-						url: 'http://localhost:63342/api/hello',
+						url: `http://localhost:8080/api/hello?param=${hello}&param2=${hello + 10}`,
 						type: "GET",
 						success: function(data){
 						 //alert(data[message]);
-						 console(JSON.parse(data))
+						 console.log(data);
+
 					 },
 
 					 error: function(data){
