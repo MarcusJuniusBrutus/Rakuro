@@ -70,7 +70,6 @@ public class BookingService {
 	* @param hotel_chain_name the hotel_chain_name
 	* @param hotel_number the hotel_number
 	* @param room_number the room_number
-	* @param is_paid_for the is_paid_for
 	* @param start_date the start_date, must be in format YYYY-MM-DD
 	* @param start_time the start_time, must be in format HH:MM:SS
 	* @param end_date the end_date, must be in format YYYY-MM-DD
@@ -90,10 +89,11 @@ public class BookingService {
 
         // database connection object
         ConnectionDB db = new ConnectionDB();
+		Connection con = null;
 
         // try connect to database, catch any exceptions
         try {
-            con = db.getConnection();
+             con = db.getConnection();
 
             // prepare statement
             PreparedStatement stmt = con.prepareStatement(sql);
