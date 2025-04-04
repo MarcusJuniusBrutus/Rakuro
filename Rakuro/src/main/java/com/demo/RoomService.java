@@ -5,6 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import PACKAGE_NAME.com.demo.Room;
+import PACKAGE_NAME.com.demo.ConnectionDB;
+
 
 public class RoomService {
 
@@ -21,7 +24,7 @@ public class RoomService {
         // database connection object
         ConnectionDB db = new ConnectionDB();
 
-        // data structure to keep all grades retrieved from database
+        // data structure to keep all rooms retrieved from database
         List<Room> rooms = new ArrayList<>();
 
         // try connect to database, catch any exceptions
@@ -35,11 +38,18 @@ public class RoomService {
 
             // iterate through the result set
             while (rs.next()) {
-                // create new room object
-                //Room room = new Room(//TODO!);
 
-                // append room in rooms list
-//                rooms.add(room); //TODO
+                String hotel_chain_name = rs.getString("hotel_chain_name");
+                Integer hotel_humber = rs.getInt("hotel_number");
+                String room_number = rs.getString("room_number");
+                Integer capacity = rs.getInt("capacity");
+                String view_type = rs.getString("view_type");
+                boolean is_extendable = rs.getBoolean("is_extendable");
+                double price = rs.getDouble("price");
+
+                Room new_room = new Room(hotel_chain_name, hotel_humber, room_number, capacity, view_type, is_extendable, price);
+
+                rooms.add(new_room);
             }
 
             //close the result set
