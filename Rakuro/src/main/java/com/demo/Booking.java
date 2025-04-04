@@ -2,7 +2,6 @@ package com.demo;
 
 import java.sql.Date;
 import java.sql.Time;
-import PACKAGE_NAME.com.demo.Status;
 
 
 /**

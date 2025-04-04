@@ -1,5 +1,4 @@
-package main.java.com.demo;
-import PACKAGE_NAME.com.demo.ConnectionDB;
+package com.demo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
