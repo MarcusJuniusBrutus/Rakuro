@@ -12,8 +12,5 @@
         <module name="Rakuro" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Rakuro" target="17" />
-    </bytecodeTargetLevel>
   </component>
 </project>
