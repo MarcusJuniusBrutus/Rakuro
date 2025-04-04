@@ -8,11 +8,11 @@ import java.sql.SQLException;
 public class ConnectionDB {
 
     /* Database connection settings, change dbName, dbusername, dbpassword */
-    private final String ipAddress = "127.0.0.1";
+    private final String ipAddress = "localhost";
     private final String dbServerPort = "5432";
-    private final String dbName = "postgres";
+    private final String dbName = "Rakuro";
     private final String dbusername = "postgres";
-    private final String dbpassword = "";
+    private final String dbpassword = "197199";
 
 
     private Connection con = null;

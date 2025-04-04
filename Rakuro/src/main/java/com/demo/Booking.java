@@ -19,7 +19,7 @@ public class Booking {
     private Date start_date;
     private Time end_time;
     private Date end_date;
-    private Status status;
+    private BlahBlahBlah status;
 
 
     /**
@@ -38,7 +38,7 @@ public class Booking {
      * @param status the status of the booking (enum)
      *
      */
-    public Booking(String SSN, String hotel_chain_name, Integer hotel_number, String room_number, boolean is_paid_for, String booking_number, Time start_time, Date start_date, Time end_time, Date end_date, Status status) {
+    public Booking(String SSN, String hotel_chain_name, Integer hotel_number, String room_number, boolean is_paid_for, String booking_number, Time start_time, Date start_date, Time end_time, Date end_date, BlahBlahBlah status) {
         this.SSN = SSN;
         this.hotel_chain_name = hotel_chain_name;
         this.hotel_number = hotel_number;
@@ -63,7 +63,7 @@ public class Booking {
     public Date getStartDate() { return this.start_date; }
     public Time getEndTime() { return this.end_time; }
     public Date getEndDate() { return this.end_date; }
-    public Status getStatus() { return this.status; }
+    public BlahBlahBlah getStatus() { return this.status; }
 
     /* Setters */
     public void setSSN(String SSN) { this.SSN = SSN; }
@@ -76,7 +76,7 @@ public class Booking {
     public void setStartDate(Date start_date) { this.start_date = start_date; }
     public void setEndTime(Time end_time) { this.end_time = end_time; }
     public void setEndDate(Date end_date) { this.end_date = end_date; }
-    public void setStatus(Status status) { this.status = status; }
+    public void setStatus(BlahBlahBlah status) { this.status = status; }
 
     @Override
     public String toString() {
