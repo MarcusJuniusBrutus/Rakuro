@@ -1,0 +1,37 @@
+CREATE VIEW AVAILABLE_ROOMS_PER_CITY AS
+SELECT
+	H.CITY AS AREA, COUNT(*) AS NUMBER_ROOMS_AVAILABLE
+FROM
+	ROOM R
+	NATURAL JOIN HOTEL H
+WHERE
+	NOT EXISTS (
+		SELECT
+			B.ROOM_NUMBER,
+			B.HOTEL_NUMBER,
+			B.HOTEL_CHAIN_NAME
+		FROM
+			BOOKING B
+		WHERE START_DATE <= CURRENT_DATE 
+		AND END_DATE >= CURRENT_DATE 
+		AND R.ROOM_NUMBER = B.ROOM_NUMBER
+		AND R.HOTEL_NUMBER = B.HOTEL_NUMBER
+		AND R.HOTEL_CHAIN_NAME = B.HOTEL_CHAIN_NAME
+	)
+GROUP BY
+	H.CITY;
+
+CREATE VIEW rooms_total_capacity(
+    hotel_chain_name,
+    hotel_number,
+    total_capacity
+) AS
+SELECT
+    hotel_chain_name,
+    hotel_number,
+    SUM(capacity)
+FROM
+    Room
+GROUP BY
+    hotel_chain_name,
+    hotel_number;

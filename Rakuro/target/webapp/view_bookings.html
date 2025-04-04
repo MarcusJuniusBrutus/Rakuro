@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en-CA">
+
+<head>
+
+	<meta charset="UTF-8">
+	<!--view_bookings.html-->
+	<!--#99ccff, #0066cc, #006666, #4d0099, #4d004d-->
+	<title> View Bookings </title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<style>
+	.center {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.left {
+		display: block;
+		margin-left: auto;
+	}
+
+	.right {
+		display: block;
+		margin-right: auto;
+	}
+
+	th, table {
+		width: 240px;
+		text-align: center;
+		font-family: Verdana;
+		font-size: 23px;
+		color: #006666;
+		border: 5px solid #0066cc;
+		border-collapse: collapse;
+	}
+
+	.row {
+		display: flex;
+	}
+
+	.column {
+		flex: 50%;
+		padding: 10px;
+	}
+</style>
+
+<script>
+	function end() {
+		<& document.input.booking_number.value="gvguhbjh" %>
+	}
+</script>
+
+</head>
+
+<body style="background-color:#99ccff">
+
+	<h1 style="text-align: center; font-family: Verdana; font-size: 54px; color: 
+#0066cc">
+		Rakuro Hotel Website
+	</h1>
+
+	<table class="center" style="width: 720px">
+		<tr>
+			<th><a href="rakuro.html">Home</a></th>
+			<th><a href="find_rooms.html">Find Rooms</a></th>
+			<th>View Bookings</th>
+			<th><a href="customer_register.html">Sign Up</a></th>
+		</tr>
+	</table>
+	<br>
+
+	<h3 style="text-align: center; font-family: Verdana; font-size: 31px; color: #4d0099; margin: 0px 100px 20px 100px">
+		Rakuro Booking Viewer
+	</h3>
+	
+	<div style="text-align: center; font-family: Verdana; font-size: 23px; color: #4d004d; margin: 0px 100px 50px 100px">
+		Here you can view your existing bookings. Just insert the booking number for the booking you wish to view the details of and we will show you them.
+	</div>
+	
+	<table><tr><th>
+	<form style="text-align: left; font-family: Verdana; font-size: 18px; color: #4d004d; margin: 50px 100px 50px 100px", name= "input">
+		<div><b> Booking Number: <br></b>
+			<textarea style="font-size: 18px", name= "booking_number" rows=1 cols=20></textarea><br>
+		<div>
+		<input type="button" name="Submit" value="Submit" onClick="end()">
+	</form></th>
+	<!-- Insert result column here -->
+	</tr></table>
+
+</body>
+</html>
