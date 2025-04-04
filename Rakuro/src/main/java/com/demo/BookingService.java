@@ -11,6 +11,7 @@ public class BookingService {
      * Method to get all bookings from the database given a booking_number
      *
      * @return List of bookings from database
+	 * @param booking_number the booking_number of the booking to return
      * @throws Exception when trying to connect to database
      */
     public Booking getBooking(String booking_number) throws Exception {
