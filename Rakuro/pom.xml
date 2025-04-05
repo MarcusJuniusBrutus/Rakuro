@@ -23,8 +23,6 @@
         <artifactId>postgresql</artifactId>
         <version>42.7.5</version>
     </dependency>
-    </dependencies>
-
 
         <dependency>
             <groupId>jakarta.servlet</groupId>
@@ -52,4 +50,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

@@ -41,66 +41,137 @@ INSERT INTO Booking VALUES
 
 
 
-
 -- Trigger #2:
 SET search_path = 'Rakuro'; --change name to the path you have
 
-CREATE FUNCTION ADD_ARCHIVED () RETURNS TRIGGER LANGUAGE 'plpgsql' AS $$ --creates function that adds archives and returns trigger
+CREATE OR REPLACE FUNCTION ADD_ARCHIVED () RETURNS TRIGGER LANGUAGE 'plpgsql' AS $$ --creates function that adds archives and returns trigger
 declare  --no variables declared
 begin
 -- add entry to archived booking table
-    INSERT INTO archived_booking (
-            booking_number,
-            ssn,
-            room_number,
-            was_paid_for,
-            start_date,
-            start_time,
-            end_date,
-            end_time,
-            hotel_chain_name,
-            street,
-            postal_code,
-            city,
-            province,
-            country,
-            first_name,
-            middle_name,
-            last_name,
-            status
-        )
-        SELECT --use attributes that are getting inserted
-            NEW.booking_number,
-            NEW.SSN,
-            NEW.room_number
-            NEW.is_paid_for,
-            NEW.start_date,
-            NEW.start_time,
-            NEW.end_date,
-            NEW.end_time,
-            NEW.hotel_chain_name,
-            c.street,
-            c.postal_code,
-            c.city,
-            c.province,
-            c.country,
-            c.first_name,
-            c.middle_name,
-            c.last_name,
-            NEW.status
-        FROM Customer c
-        WHERE c.SSN = NEW.SSN;
+    INSERT INTO Archived_Booking (
+    booking_number,
+    SSN,
+    room_number,
+    was_paid_for,
+    start_time,
+    start_date,
+    end_time,
+    end_date,
+    hotel_chain_name,
+    street,
+    postal_code,
+    city,
+    province,
+    country,
+    first_name,
+    middle_name,
+    last_name,
+    status
+)
+SELECT
+    b.booking_number,
+    b.SSN,
+    b.room_number,
+    b.is_paid_for,
+    b.start_time,
+    b.start_date,
+    b.end_time,
+    b.end_date,
+    b.hotel_chain_name,
+    h.street,
+    h.postal_code,
+    h.city,
+    h.province,
+    h.country,
+    p.first_name,
+    p.middle_name,
+    p.last_name,
+    b.status
+FROM Booking b
+JOIN Hotel h
+    ON b.hotel_chain_name = h.hotel_chain_name
+   AND b.hotel_number = h.hotel_number
+JOIN Person p
+    ON b.SSN = p.SSN;
 
         RETURN NEW;
 end;
 $$; --function ends here
 
 
-CREATE TRIGGER check_availability_room --create trigger to check avaliable rooms before inserting a new booking
+CREATE OR REPLACE TRIGGER add_to_archived --create trigger to add to archived booking after inserting a new booking
 AFTER INSERT ON booking
-EXECUTE PROCEDURE CHECK_ROOM_AVAILABLE (); --run function for each row to check that there are rooms available
+FOR EACH ROW
+EXECUTE PROCEDURE ADD_ARCHIVED (); --run function for each row to check that there are rooms available
 
 --Drop triggers and function
 -- DROP FUNCTION CHECK_ROOM_AVAILABLE ();
 -- DROP TRIGGER IF EXISTS check_availability_room ON booking;
 
+
+
+
+---- Trigger #2:
+--SET search_path = 'Rakuro'; --change name to the path you have
+--
+--CREATE FUNCTION ADD_ARCHIVED () RETURNS TRIGGER LANGUAGE 'plpgsql' AS $$ --creates function that adds archives and returns trigger
+--declare  --no variables declared
+--begin
+---- add entry to archived booking table
+--    INSERT INTO archived_booking (
+--            booking_number,
+--            ssn,
+--            room_number,
+--            was_paid_for,
+--            start_date,
+--            start_time,
+--            end_date,
+--            end_time,
+--            hotel_chain_name,
+--            street,
+--            postal_code,
+--            city,
+--            province,
+--            country,
+--            first_name,
+--            middle_name,
+--            last_name,
+--            status
+--        )
+--        SELECT --use attributes that are getting inserted
+--            NEW.booking_number,
+--            NEW.SSN,
+--            NEW.room_number
+--            NEW.is_paid_for,
+--            NEW.start_date,
+--            NEW.start_time,
+--            NEW.end_date,
+--            NEW.end_time,
+--            NEW.hotel_chain_name,
+--            c.street,
+--            c.postal_code,
+--            c.city,
+--            c.province,
+--            c.country,
+--            c.first_name,
+--            c.middle_name,
+--            c.last_name,
+--            NEW.status
+--        FROM Customer c
+--        WHERE c.SSN = NEW.SSN
+--        FROM Hotel h
+--        WHERE h.hotel_number = NEW.hotel_number;
+--
+--        RETURN NEW;
+--end;
+--$$; --function ends here
+--
+--
+--CREATE TRIGGER check_availability_room --create trigger to check avaliable rooms before inserting a new booking
+--AFTER INSERT ON booking
+--EXECUTE PROCEDURE CHECK_ROOM_AVAILABLE (); --run function for each row to check that there are rooms available
+--
+----Drop triggers and function
+---- DROP FUNCTION CHECK_ROOM_AVAILABLE ();
+---- DROP TRIGGER IF EXISTS check_availability_room ON booking;
+--
