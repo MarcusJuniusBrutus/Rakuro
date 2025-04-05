@@ -17,7 +17,13 @@
     </properties>
 
     <dependencies>
-<<<<<<< HEAD
+
+    <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>42.7.5</version>
+    </dependency>
+
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
@@ -44,14 +50,5 @@
             </plugin>
         </plugins>
     </build>
-=======
-    <dependency>
-        <groupId>org.postgresql</groupId>
-        <artifactId>postgresql</artifactId>
-        <version>42.7.5</version>
-    </dependency>
-    </dependencies>
 
-
->>>>>>> a1ae9bbb65a8b90670a04d32545a70ed8a907b2e
 </project>

@@ -2,9 +2,6 @@ package com.demo;
 
 import java.sql.Date;
 import java.sql.Time;
-
-
-
 /**
  * Booking class to save booking info
  */
@@ -93,9 +90,5 @@ public class Booking {
                 + "<li>end_date= " + end_date + "</li>"
                 + "<li>status= " + status + "</li>";
     }
-
-
-
-
 
 }

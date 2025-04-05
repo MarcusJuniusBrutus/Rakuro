@@ -7,6 +7,12 @@
     <list default="true" id="7b859af3-feca-4bf9-bebe-b77dacc7d539" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/BlahBlahBlah.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/Booking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/BookingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/RoomService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/RoomService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/Status.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +60,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Smart Tomcat.Run2.0.executor": "Run",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Merging main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Xiaoqing/.SmartTomcat/SubmitRakuro/SubmitRakuro",
