@@ -101,7 +101,7 @@ CREATE TABLE Archived_Booking(
     province VARCHAR(20) NOT NULL,
     country VARCHAR(20) NOT NULL,
     first_name VARCHAR(20) NOT NULL,
-    middle_name VARCHAR(20) NULL,
+    middle_name VARCHAR(20),
     last_name VARCHAR(20) NOT NULL,
     status VARCHAR(10) NOT NULL
 );
